@@ -33,6 +33,7 @@ namespace SeleniumEXample_Csharp
             //driver.FindElement(By.Name("q")).SendKeys("software-testing.ru" + Keys.Enter);
             //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
             whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
+            //added coment for commit on github
         }
 
         [TearDown]
