@@ -33,9 +33,20 @@ namespace SeleniumEXample_Csharp
             //driver.FindElement(By.Name("q")).SendKeys("software-testing.ru" + Keys.Enter);
             //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
             whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
-            //added coment for commit on github
         }
 
+
+        [Test]
+        public void  AdminLogin()
+        {
+            driver.Url = "http://localhost:8080/litecart/admin/login.php";
+            driver.FindElement(By.Name("username")).SendKeys("admin");
+            driver.FindElement(By.Name("password")).SendKeys("admin");
+            driver.FindElement(By.Name("login")).Click();
+
+         }
+
+      
         [TearDown]
         public void stop()
         {
