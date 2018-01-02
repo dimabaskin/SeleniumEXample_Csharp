@@ -13,8 +13,8 @@ C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\nunit.framework.xml
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\WebDriver.xml
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\WebDriver.Support.xml
-C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csprojResolveAssemblyReference.cache
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csproj.CoreCompileInputs.cache
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.dll
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.pdb
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\chromedriver.exe
+C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csprojResolveAssemblyReference.cache
