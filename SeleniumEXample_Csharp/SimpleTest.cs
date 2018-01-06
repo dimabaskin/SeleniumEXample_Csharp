@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Configuration;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Extensions;
+
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,13 +19,35 @@ namespace SeleniumEXample_Csharp
     {
 
         private IWebDriver driver;
+        private readonly string _driverType;
         private WebDriverWait whait;
+
+        public SimpleTest()
+        {
+            _driverType = ConfigurationManager.AppSettings["driver"];
+        }
         
         [SetUp]
         public void start()
         {
-            driver = new ChromeDriver();
-            whait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            switch(_driverType)
+            {
+                case "chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    driver = new FirefoxDriver();
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    break;
+                case "IE":
+                    driver = new InternetExplorerDriver();
+                    break;
+                default:
+                    driver = new ChromeDriver();
+                    break;
+            }
+
+            whait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
         }
 
@@ -43,6 +69,8 @@ namespace SeleniumEXample_Csharp
             driver.FindElement(By.Name("username")).SendKeys("admin");
             driver.FindElement(By.Name("password")).SendKeys("admin");
             driver.FindElement(By.Name("login")).Click();
+            var test = driver.FindElement(By.Id("notices"));
+            NUnit.Framework.Assert.IsTrue(test.FindElement(By.TagName("div")).Text.Contains("admin"), "Not ADMIN");
 
          }
 

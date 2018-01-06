@@ -18,3 +18,4 @@ C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.pdb
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\chromedriver.exe
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csprojResolveAssemblyReference.cache
+C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\bin\Debug\SeleniumEXample_Csharp.dll.config
