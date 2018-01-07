@@ -12,17 +12,17 @@ using OpenQA.Selenium.Support.Extensions;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SeleniumEXample_Csharp
+namespace SeleniumEXample_Csharp.Tests
 {
     [TestFixture]
-    public class SimpleTest
+    public class BaseTest
     {
 
-        private IWebDriver driver;
+        internal IWebDriver driver;
         private readonly string _driverType;
-        private WebDriverWait whait;
+        internal WebDriverWait whait;
 
-        public SimpleTest()
+        public BaseTest()
         {
             _driverType = ConfigurationManager.AppSettings["driver"];
         }
@@ -49,20 +49,9 @@ namespace SeleniumEXample_Csharp
 
             whait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
+            AdminLogin();
         }
 
-
-        [Test]
-        public void OpenBrowser()
-        {
-            driver.Url = "http://software-testing.ru/";
-            //driver.FindElement(By.Name("q")).SendKeys("software-testing.ru" + Keys.Enter);
-            //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
-            whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
-        }
-
-
-        [Test]
         public void  AdminLogin()
         {
             driver.Url = "http://localhost:8080/litecart/admin/login.php";
