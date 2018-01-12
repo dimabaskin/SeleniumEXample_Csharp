@@ -7,9 +7,6 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
-
-
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SeleniumEXample_Csharp.Tests
@@ -49,19 +46,10 @@ namespace SeleniumEXample_Csharp.Tests
 
             whait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
-            AdminLogin();
+           
         }
 
-        public void  AdminLogin()
-        {
-            driver.Url = "http://localhost:8080/litecart/admin/login.php";
-            driver.FindElement(By.Name("username")).SendKeys("admin");
-            driver.FindElement(By.Name("password")).SendKeys("admin");
-            driver.FindElement(By.Name("login")).Click();
-            var test = driver.FindElement(By.Id("notices"));
-            NUnit.Framework.Assert.IsTrue(test.FindElement(By.TagName("div")).Text.Contains("admin"), "Not ADMIN");
-
-         }
+       
 
       
         [TearDown]

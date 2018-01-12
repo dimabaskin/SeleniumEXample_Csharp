@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
-
+using NUnit.Framework;
 
 namespace SeleniumEXample_Csharp.Pages
 {
@@ -12,7 +12,7 @@ namespace SeleniumEXample_Csharp.Pages
     {
         public MainAdminPage(IWebDriver Driver) : base(Driver)
         {
-
+            AdminLogin();
         }
 
         public void CheckAppearenceMenu()
@@ -121,13 +121,12 @@ namespace SeleniumEXample_Csharp.Pages
         public void CheckGeoZonesMenu()
         {
             //1. Click on Geo Zones Menu
-            var GeoZonesMenu = FindElementInMenu("Geo");
+            var GeoZonesMenu = FindElementInMenu("Geo Zones");
             if (GeoZonesMenu is null) { NUnit.Framework.Assert.Fail("Geo Zones Menu not Exist on Page!!!"); }
             else { GeoZonesMenu.Click(); }
             CheckTitle("Geo Zones");
         }
-
-
+        
         public void CheckLanguagesMenu()
         {
             //1. Click on Languages Menu
@@ -351,7 +350,16 @@ namespace SeleniumEXample_Csharp.Pages
 
         }
 
+        public void AdminLogin()
+        {
+            Driver.Url = "http://localhost:8080/litecart/admin/login.php";
+            Driver.FindElement(By.Name("username")).SendKeys("admin");
+            Driver.FindElement(By.Name("password")).SendKeys("admin");
+            Driver.FindElement(By.Name("login")).Click();
+            var test = Driver.FindElement(By.Id("notices"));
+            NUnit.Framework.Assert.IsTrue(test.FindElement(By.TagName("div")).Text.Contains("admin"), "Not ADMIN");
 
+        }
 
         private void CheckTitle(string Title)
         {
@@ -365,12 +373,45 @@ namespace SeleniumEXample_Csharp.Pages
             var MenuList = Driver.FindElements(By.ClassName("name"));
             foreach (var menu in MenuList)
             {
-                if (menu.Text.Contains(elementName))
+                if (menu.Text.Equals(elementName))
                 {
                     return menu;
                 }
             }
             return null;
         }
-    }
+
+        public void ClickOnAllMenus()
+        {
+            var MenuList = Driver.FindElements(By.Id("app-"));
+            List<string> MenuName = new List<string>();
+            foreach (var menu in MenuList)
+            {
+                MenuName.Add(menu.Text);
+
+            }
+
+            foreach(string name in MenuName)
+            {
+                FindElementInMenu(name).Click();
+                var title = Driver.FindElement(By.TagName("h1"));
+
+                List<string> SubMenuName = new List<string>();
+                var SubMenuList = Driver.FindElements(By.XPath("//li[starts-with(@id,'doc-')]"));
+                if (SubMenuList.Count > 0)
+                {
+                    foreach (var menu in SubMenuList)
+                    {
+                        SubMenuName.Add(menu.Text);
+                    }
+                    foreach(string subname in SubMenuName)
+                    {
+                        FindElementInMenu(subname).Click();
+                        var subtitle = Driver.FindElement(By.TagName("h1"));
+                    }
+                }
+
+            }
+        }
+   }
 }

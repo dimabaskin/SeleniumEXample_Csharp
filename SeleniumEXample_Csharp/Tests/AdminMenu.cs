@@ -36,6 +36,13 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        public void ClickAllAdminMenu()
+        {
+            MainAdminPage AdminPage = new MainAdminPage(driver);
+            AdminPage.ClickOnAllMenus();
+        }
+
+        [Test]
         public void AppearenceMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
