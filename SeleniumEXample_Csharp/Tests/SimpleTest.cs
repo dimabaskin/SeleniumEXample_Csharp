@@ -10,6 +10,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
+using SeleniumEXample_Csharp.Pages;
 
 namespace SeleniumEXample_Csharp.Tests
 {
@@ -22,6 +23,14 @@ namespace SeleniumEXample_Csharp.Tests
             //driver.FindElement(By.Name("q")).SendKeys("software-testing.ru" + Keys.Enter);
             //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
             whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
+        }
+
+        [Test]
+        public void CheckAllProductsHaveSticker()
+        {
+            HomePage mainPage = new HomePage(driver);
+            var ProductList = mainPage.FindAllProductsOnPage();
+            mainPage.CheckProductHaveSticker(ProductList);
         }
     }
 }
