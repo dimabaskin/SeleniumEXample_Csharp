@@ -8,69 +8,14 @@ using NUnit.Framework;
 
 namespace SeleniumEXample_Csharp.Pages
 {
-    public class HomePage : BasePage
+    public class ProductPage : BasePage
     {
-        public HomePage(IWebDriver driver) : base(driver)
-        {
-            Driver.Url = "http://localhost:8080/litecart/en/";
 
+        public ProductPage(IWebDriver driver) : base(driver)
+        {
         }
 
-        public IList<IWebElement> FindAllProductsOnPage()
-        {
-            return Driver.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
-
-        }
-
-        public void CheckProductHaveSticker(IList<IWebElement> ProductList)
-        {
-            List<string> ProductNames = new List<string>();
-
-            foreach(var product in ProductList)
-            {
-                try
-                {
-                    product.FindElement(By.ClassName("sticker "));
-                }
-                catch (NoSuchElementException ex)
-                {
-                    ProductNames.Add(product.FindElement(By.ClassName("name")).Text);
-                    string exseption = ex.Message;
-                }
-            }
-
-
-            string products = string.Join(",", ProductNames.ToArray());
-         
-            NUnit.Framework.Assert.IsEmpty(ProductNames, "The Following Products Have no Sticker:  " + products);
-        }
-
-        public bool ProductHaveStickerNew(IWebElement ProductElement)
-        {
-            try
-            {
-                return ProductElement.FindElement(By.ClassName("sticker ")).GetAttribute("title").Contains("New");
-            }
-            catch
-            {
-                return false;
-            }
-            
-        }
-
-
-        public bool ProductHaveStickerSale(IWebElement ProductElement)
-        {
-            try
-            {
-                return ProductElement.FindElement(By.ClassName("sticker ")).GetAttribute("title").Contains("Sale");
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
+        public IWebElement GetProductElement() => Driver.FindElement(By.Id("box-product"));
 
         public Product GetSaleProductParameters(IWebElement ProductElement)
         {
@@ -78,7 +23,7 @@ namespace SeleniumEXample_Csharp.Pages
             var RegularPrice = ProductElement.FindElement(By.ClassName("regular-price"));
             var CampaignPrice = ProductElement.FindElement(By.ClassName("campaign-price"));
 
-            product.ProductName = ProductElement.FindElement(By.ClassName("name")).Text;
+            product.ProductName = ProductElement.FindElement(By.ClassName("title")).Text;
             product.RegularPrice.price = RegularPrice.Text;
             product.RegularPrice.isStrikethrough = RegularPrice.GetProperty("tagName").Equals("S");
             product.RegularPrice.SetColor(RegularPrice.GetCssValue("color"));
@@ -100,16 +45,50 @@ namespace SeleniumEXample_Csharp.Pages
             Product product = new Product();
             var Price = ProductElement.FindElement(By.ClassName("price"));
 
-            product.ProductName = ProductElement.FindElement(By.ClassName("name")).Text;
+            product.IsOnSaile = false;
+            product.ProductName = ProductElement.FindElement(By.ClassName("title")).Text;
             product.RegularPrice.price = Price.Text;
             product.RegularPrice.isStrikethrough = Price.GetProperty("tagName").Equals("S");
             product.RegularPrice.SetColor(Price.GetCssValue("color"));
             product.RegularPrice.textStyle = Price.GetCssValue("font-weight");
             product.RegularPrice.SetTextSize(Price.GetCssValue("font-size"));
-            product.IsOnSaile = false;
 
 
             return product;
+        }
+
+        internal void BackToHomePage()
+        {
+            Driver.Url = "http://localhost:8080/litecart/en/";
+        }
+
+
+
+        public bool ProductHaveStickerNew(IWebElement ProductElement)
+        {
+            try
+            {
+                return ProductElement.FindElement(By.ClassName("sticker ")).GetAttribute("title").Contains("New");
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+        public bool ProductHaveStickerSale(IWebElement ProductElement)
+        {
+            try
+            {
+                return ProductElement.FindElement(By.ClassName("sticker ")).GetAttribute("title").Contains("Sale");
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }
