@@ -24,13 +24,6 @@ namespace SeleniumEXample_Csharp.Tests
             //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
             whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
         }
-
-        [Test]
-        public void CheckAllProductsHaveSticker()
-        {
-            HomePage mainPage = new HomePage(driver);
-            var ProductList = mainPage.FindAllProductsOnPage();
-            mainPage.CheckProductHaveSticker(ProductList);
-        }
+        
     }
 }

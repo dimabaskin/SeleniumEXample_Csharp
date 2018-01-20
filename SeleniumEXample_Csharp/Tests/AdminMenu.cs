@@ -12,6 +12,9 @@ namespace SeleniumEXample_Csharp.Tests
     public class AdminMenu : BaseTest
     {
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName ="Check All Admin Menu",
+                  Description ="Test check all Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void CheckAllAdminMenu()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -36,6 +39,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Click on All Admin Menu",
+                  Description = "Test check thet all Admin Menu and Submenu are clickable , clicking on each and verify page have header <h1>.")]
         public void ClickAllAdminMenu()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -43,6 +49,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Appearence Admin Menu",
+                  Description = "Test check Appearence Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void AppearenceMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -50,6 +59,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Catalog Admin Menu",
+                  Description = "Test check Catalog Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void CatalogMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -57,6 +69,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Countries Admin Menu",
+                  Description = "Test check Countries Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void CountriesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -64,6 +79,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Currencies Admin Menu",
+                  Description = "Test check Currencies Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void CurrenciesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -71,6 +89,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Customers Admin Menu",
+                  Description = "Test check Customers Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void CustomersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -78,6 +99,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check GeoZones Admin Menu",
+                  Description = "Test check GeoZones Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void GeoZonesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -85,6 +109,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Languages Admin Menu",
+                  Description = "Test check Languages Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void LanguagesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -92,6 +119,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Modules Admin Menu",
+                  Description = "Test check Modules Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void ModulesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -99,6 +129,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Orders Admin Menu",
+                  Description = "Test check Orders Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void OrdersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -106,6 +139,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Pages Admin Menu",
+                  Description = "Test check Pages Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void PagesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -113,6 +149,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Reports Admin Menu",
+                  Description = "Test check Reports Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void ReportsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -120,6 +159,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Settings Admin Menu",
+                  Description = "Test check Settings Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void SettingsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -127,6 +169,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Slides Admin Menu",
+                  Description = "Test check Slides Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void SlidesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -134,6 +179,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Tax Admin Menu",
+                  Description = "Test check Tax Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void TaxMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -141,6 +189,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Translations Admin Menu",
+                  Description = "Test check Translations Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void TranslationsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -148,6 +199,9 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Check Users Admin Menu",
+                  Description = "Test check Users Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
         public void UsersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -155,7 +209,10 @@ namespace SeleniumEXample_Csharp.Tests
         }
 
         [Test]
-        public void vQmodsMenuTest()
+        [TestCase(Category = "Admin",
+                  TestName = "Check VQmods Admin Menu",
+                  Description = "Test check VQmods Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+        public void VQmodsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
             AdminPage.CheckvQmodsMenu();
