@@ -34,7 +34,8 @@ namespace SeleniumEXample_Csharp.Tests
                     break;
                 case "firefox":
                     driver = new FirefoxDriver();
-                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                    driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
+                    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                     break;
                 case "IE":
                     driver = new InternetExplorerDriver();

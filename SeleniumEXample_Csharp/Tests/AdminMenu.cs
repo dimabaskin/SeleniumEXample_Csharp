@@ -13,8 +13,7 @@ namespace SeleniumEXample_Csharp.Tests
     {
         [Test]
         [TestCase(Category = "Admin",
-                  TestName ="Check All Admin Menu",
-                  Description ="Test check all Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName ="Check All Admin Menu")]
         public void CheckAllAdminMenu()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -40,8 +39,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Click on All Admin Menu",
-                  Description = "Test check thet all Admin Menu and Submenu are clickable , clicking on each and verify page have header <h1>.")]
+                  TestName = "Click on All Admin Menu")]
         public void ClickAllAdminMenu()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -50,8 +48,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Appearence Admin Menu",
-                  Description = "Test check Appearence Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Appearence Admin Menu")]
         public void AppearenceMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -60,8 +57,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Catalog Admin Menu",
-                  Description = "Test check Catalog Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Catalog Admin Menu")]
         public void CatalogMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -70,8 +66,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Countries Admin Menu",
-                  Description = "Test check Countries Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Countries Admin Menu")]
         public void CountriesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -80,8 +75,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Currencies Admin Menu",
-                  Description = "Test check Currencies Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Currencies Admin Menu")]
         public void CurrenciesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -90,8 +84,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Customers Admin Menu",
-                  Description = "Test check Customers Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Customers Admin Menu")]
         public void CustomersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -100,8 +93,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check GeoZones Admin Menu",
-                  Description = "Test check GeoZones Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check GeoZones Admin Menu")]
         public void GeoZonesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -110,8 +102,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Languages Admin Menu",
-                  Description = "Test check Languages Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Languages Admin Menu")]
         public void LanguagesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -120,8 +111,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Modules Admin Menu",
-                  Description = "Test check Modules Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Modules Admin Menu")]
         public void ModulesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -130,8 +120,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Orders Admin Menu",
-                  Description = "Test check Orders Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Orders Admin Menu")]
         public void OrdersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -140,8 +129,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Pages Admin Menu",
-                  Description = "Test check Pages Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Pages Admin Menu")]
         public void PagesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -150,8 +138,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Reports Admin Menu",
-                  Description = "Test check Reports Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Reports Admin Menu")]
         public void ReportsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -160,8 +147,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Settings Admin Menu",
-                  Description = "Test check Settings Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Settings Admin Menu")]
         public void SettingsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -170,8 +156,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Slides Admin Menu",
-                  Description = "Test check Slides Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Slides Admin Menu")]
         public void SlidesMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -180,8 +165,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Tax Admin Menu",
-                  Description = "Test check Tax Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Tax Admin Menu")]
         public void TaxMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -190,8 +174,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Translations Admin Menu",
-                  Description = "Test check Translations Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Translations Admin Menu")]
         public void TranslationsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -200,8 +183,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check Users Admin Menu",
-                  Description = "Test check Users Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                  TestName = "Check Users Admin Menu")]
         public void UsersMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
@@ -210,15 +192,35 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Admin",
-                  TestName = "Check VQmods Admin Menu",
-                  Description = "Test check VQmods Admin Menu and Submenu by clicking on it and verify user get the rigth page.")]
+                TestName = "Check VQmods Admin Menu") ]
         public void VQmodsMenuTest()
         {
             MainAdminPage AdminPage = new MainAdminPage(driver);
             AdminPage.CheckvQmodsMenu();
         }
 
+        [Test]
+        [TestCase(Category ="Admin",
+                  TestName = "Countries Are Sorted in Countries Menu")]
+        public void CountriesAreSortedInCountriesMenu()
+        {
+            MainAdminPage AdminPage = new MainAdminPage(driver);
+            AdminPage.CheckCountriesMenu();
+            NUnit.Framework.Assert.IsTrue(AdminPage.IsCountriesTableSorted(), "Error - Countries Table not Sorted .");
+            NUnit.Framework.Assert.IsTrue(AdminPage.IsCountryZonesSorted(), "Error - Country Zone Table not sorted . ");
+        }
 
+        [Test]
+        [TestCase(Category = "Admin",
+                  TestName = "Countries Are Sorted in Geo Zone Menu")]
+        public void CountriesAreSortedInGeoZoneMenu()
+        {
+            MainAdminPage AdminPage = new MainAdminPage(driver);
+            AdminPage.GoBackToGeoZonesPage();
+            NUnit.Framework.Assert.IsTrue(AdminPage.IsGeoZonesSortedInEachCountry(), "Error - Geo Zone not Sorted");
+
+            
+        }
 
     }
 }

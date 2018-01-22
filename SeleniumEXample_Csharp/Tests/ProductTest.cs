@@ -19,8 +19,7 @@ namespace SeleniumEXample_Csharp.Tests
     {
         [Test]
         [TestCase(Category = "Product",
-                  TestName = "Check All Products on Home Page Have Sticker",
-                  Description = "Check All Products on Home Page Have Sticker.")]
+                  TestName = "Check All Products on Home Page Have Sticker")]
         public void CheckAllProductsHaveSticker()
         {
             HomePage mainPage = new HomePage(driver);
@@ -30,8 +29,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Product",
-                  TestName = "Check First Product on Home Page is the same Product on Product Page",
-                  Description = "Check First Product on Home Page is the same Product on Product Page")]
+                  TestName = "Check First Product on Home Page is the same Product on Product Page")]
         public void FirstProductPropertiesTest()
         {
             HomePage mainPage = new HomePage(driver);
@@ -74,8 +72,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         [Test]
         [TestCase(Category = "Product",
-                  TestName = "Check each Product on Home Page is the same Product on Product Page",
-                  Description = "Check each Product on Home Page is the same Product on Product Page")]
+                  TestName = "Check each Product on Home Page is the same Product on Product Page")]
         public void AllProductPropertiesTest()
         {
             HomePage mainPage = new HomePage(driver);

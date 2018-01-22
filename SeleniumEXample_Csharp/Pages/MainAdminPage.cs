@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using System.Collections.ObjectModel;
 
 namespace SeleniumEXample_Csharp.Pages
 {
@@ -200,7 +201,7 @@ namespace SeleniumEXample_Csharp.Pages
             CheckTitle("Order Statuses");
 
         }
-
+        
         public void CheckPagesMenu()
         {
             //1. Click on Pages Menu
@@ -363,9 +364,23 @@ namespace SeleniumEXample_Csharp.Pages
 
         private void CheckTitle(string Title)
         {
-            var title = Driver.FindElement(By.TagName("h1"));
-            NUnit.Framework.Assert.IsTrue(title.Text.Equals(Title),"Title: " + Title + " Not Found On Page.");
             
+                var title = Driver.FindElement(By.TagName("h1"));
+                NUnit.Framework.Assert.IsTrue(title.Text.Equals(Title), "Title: " + Title + " Not Found On Page.");
+            
+        }
+
+        private void CheckFormGeoZone()
+        {
+            var GeoZoneForm = Driver.FindElement(By.XPath("//form[@name='form_geo_zone']"));
+        }
+
+
+        private bool IsTitleOnPage(string Title)
+        {
+            var title = Driver.FindElement(By.TagName("h1"));
+            return title.Text.Equals(Title);
+
         }
 
         private IWebElement FindElementInMenu(string elementName)
@@ -379,6 +394,181 @@ namespace SeleniumEXample_Csharp.Pages
                 }
             }
             return null;
+        }
+
+        internal IWebElement FindCountryElementByName(string ContryName)
+        {
+            int iCountryIndex;
+            if (IsTitleOnPage("Geo Zones"))
+            { iCountryIndex = 2; }
+            else if (IsTitleOnPage("Countries"))
+            { iCountryIndex = 4; }
+            else
+            { iCountryIndex = 0; }
+
+            var Rows = GetCountryesTableCollection();
+
+            foreach (var row in Rows)
+            {
+                var cell = row.FindElements(By.TagName("td"));
+                if (cell[iCountryIndex].Text == ContryName)
+                {
+                    return cell[iCountryIndex];
+                }
+            }
+            return null;
+
+
+        }
+
+        internal bool IsCountriesTableSorted()
+        {
+            List<string> CountyName = new List<string>();
+            var Rows = GetCountryesTableCollection();
+            foreach (var row in Rows)
+            {
+                var cell = row.FindElements(By.TagName("td"));
+                CountyName.Add(cell[4].Text);
+            }
+
+            List<string> CountryNameSorted = CountyName.OrderBy(s => s).ToList();
+            if (CountyName.SequenceEqual(CountryNameSorted)) return true;
+            else return false;
+         }
+
+        internal bool IsZonesTableSorted()
+        {
+            List<string> CountyName = new List<string>();
+            var Rows = GetCountryZonesTableCollection();
+            foreach (var row in Rows)
+            {
+                if( ( row.GetAttribute("class") != "header") )
+                { 
+                    var cell = row.FindElements(By.TagName("td"));
+                    if( cell[0].FindElements(By.TagName("input")).Count() > 0)
+                    {
+                        CountyName.Add(cell[2].Text);
+                    }
+                }
+
+            }
+
+            List<string> CountryNameSorted = CountyName.OrderBy(s => s).ToList();
+            if (CountyName.SequenceEqual(CountryNameSorted)) return true;
+            else return false;
+
+        }
+
+        internal bool IsGeoZonesSortedInEachCountry()
+        {
+            List<string> CountryName = GetCountriesFromGeoZoneTable();
+
+            foreach (string country in CountryName)
+            {
+                var CountryElement = FindCountryElementByName(country);
+                CountryElement.FindElement(By.TagName("a")).Click();
+
+                CheckFormGeoZone();
+                
+                if (!(IsZonesInGeoZonesEditMenuSorted())) return false;
+                GoBackToGeoZonesPage();
+            }
+            return true;
+            
+        }
+
+       
+        internal bool IsZonesInGeoZonesEditMenuSorted()
+        {
+            List<string> ZoneName = new List<string>();
+            var Rows = GetCountryZonesTableCollection();
+            foreach( var row in Rows)
+            {
+                if ((row.GetAttribute("class") != "header"))
+                {
+                    var cell = row.FindElements(By.TagName("td"));
+                    if (cell[0].FindElements(By.TagName("input")).Count() > 0)
+                    {
+                        ZoneName.Add(cell[2].FindElement(By.XPath(".//option[@selected='selected']")).Text);
+                    }
+                }
+            }
+            List<string> ZoneNameSorted = ZoneName.OrderBy(s => s).ToList();
+            if (ZoneName.SequenceEqual(ZoneNameSorted)) return true;
+            else return false;
+        }
+
+        internal bool IsCountryZonesSorted()
+        {
+            List<string> CountyNameWithZone = GetCountriesWithZones();
+            foreach (string country in CountyNameWithZone)
+            {
+                var CountryElement = FindCountryElementByName(country);
+                CountryElement.FindElement(By.TagName("a")).Click();
+                CheckTitle("Edit Country");
+                if (!IsZonesTableSorted())  return false;
+                GoBackToCountryesPage();
+            }
+            return true;
+        }
+
+        internal ReadOnlyCollection<IWebElement> GetCountryesTableCollection ()
+        {
+            var CountriesTable = Driver.FindElement(By.ClassName("dataTable"));
+            return CountriesTable.FindElements(By.ClassName("row"));
+
+        }
+
+      /*  internal ReadOnlyCollection<IWebElement> GetGeoZonesTableCollection()
+        {
+            var GeoZonesTable = Driver.FindElement(By.ClassName("dataTable"));
+            return GeoZonesTable.FindElements(By.ClassName("row"));
+
+        }*/
+
+        internal ReadOnlyCollection<IWebElement> GetCountryZonesTableCollection()
+        {
+            var ZonesTable = Driver.FindElement(By.ClassName("dataTable"));
+            return ZonesTable.FindElements(By.TagName("tr"));
+        }
+
+        internal List<string> GetCountriesWithZones()
+        {
+            List<string> CountyNameList = new List<string>();
+            var Rows = GetCountryesTableCollection();
+            foreach (var row in Rows)
+            {
+                var cell = row.FindElements(By.TagName("td"));
+                int.TryParse(cell[5].Text, out int zones);
+                if (zones > 0)
+                { CountyNameList.Add(cell[4].Text); }
+
+            }
+
+            return CountyNameList;
+        }
+
+        internal List<string> GetCountriesFromGeoZoneTable()
+        {
+            List<string> CountyNameList = new List<string>();
+            var Rows = GetCountryesTableCollection();
+            foreach (var row in Rows)
+            {
+                var cell = row.FindElements(By.TagName("td"));
+                CountyNameList.Add(cell[2].Text);
+            }
+
+            return CountyNameList;
+        }
+    
+        internal void GoBackToGeoZonesPage()
+        {
+            Driver.Url = "http://localhost:8080/litecart/admin/?app=geo_zones&doc=geo_zones";
+        }
+
+        internal void GoBackToCountryesPage()
+        {
+            Driver.Url = "http://localhost:8080/litecart/admin/?app=countries&doc=countries";
         }
 
         public void ClickOnAllMenus()

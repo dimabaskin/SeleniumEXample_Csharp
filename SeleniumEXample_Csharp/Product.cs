@@ -128,12 +128,9 @@ namespace SeleniumEXample_Csharp
 
             if ( RGBstrArray.Count() == 3)
             {
-                int Red;
-                int Green;
-                int Blue;
-                int.TryParse(RGBstrArray[0], out Red);
-                int.TryParse(RGBstrArray[1], out Green);
-                int.TryParse(RGBstrArray[2], out Blue);
+                int.TryParse(RGBstrArray[0], out int Red);
+                int.TryParse(RGBstrArray[1], out int Green);
+                int.TryParse(RGBstrArray[2], out int Blue);
 
                 if (Red == Green && Red == Blue)
                 {
