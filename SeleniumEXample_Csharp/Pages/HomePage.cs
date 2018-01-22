@@ -28,15 +28,12 @@ namespace SeleniumEXample_Csharp.Pages
 
             foreach(var product in ProductList)
             {
-                try
-                {
-                    product.FindElement(By.ClassName("sticker "));
-                }
-                catch (NoSuchElementException ex)
+                
+               if ( product.FindElements(By.ClassName("sticker ")).Count != 1 )
                 {
                     ProductNames.Add(product.FindElement(By.ClassName("name")).Text);
-                    string exseption = ex.Message;
                 }
+                    
             }
 
 
