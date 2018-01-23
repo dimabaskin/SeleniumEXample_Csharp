@@ -23,11 +23,46 @@ namespace SeleniumEXample_Csharp.Pages
 
         }
 
+        internal void ClickOnSignUpButton()
+        {
+            Driver.FindElement(By.XPath("//td//a[@href='http://localhost:8080/litecart/en/create_account']")).Click();
+
+        }
+
         public IList<IWebElement> FindAllProductsOnMostPopularBoxHomePage()
         {
             var MostPopularBox = Driver.FindElement(By.Id("box-most-popular"));
             return MostPopularBox.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
 
+        }
+
+        internal void LogIn(User newRandomUser)
+        {
+            Driver.FindElement(By.XPath("//input[@name='email']")).SendKeys(newRandomUser.Email);
+            Driver.FindElement(By.XPath("//input[@name='password']")).SendKeys(newRandomUser.Password);
+            Driver.FindElement(By.XPath("//button[@name='login']")).Click();
+        }
+
+        internal void LogOut()
+        {
+            Driver.FindElement(By.XPath("//a[@href='http://localhost:8080/litecart/en/logout']")).Click();
+        }
+
+        internal bool IsUserCreated()
+        {
+            return Driver.FindElement(By.CssSelector("div.notice.success")).Text.Contains("account has been created");
+
+        }
+
+        internal bool IsUserLogedIn(User newRandomUser)
+        {
+            return Driver.FindElement(By.CssSelector("div.notice.success")).Text.Contains("logged in as " + newRandomUser.FirstName + " " + newRandomUser.LastName);
+            
+        }
+
+        internal bool IsUserLogedOut()
+        {
+            return Driver.FindElement(By.CssSelector("div.notice.success")).Text.Contains("logged out");
         }
 
         public IList<IWebElement> FindAllProductsOnCampaignsBoxHomePage()

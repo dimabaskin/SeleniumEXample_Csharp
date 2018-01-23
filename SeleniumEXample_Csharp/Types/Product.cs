@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
 
-namespace SeleniumEXample_Csharp
+namespace SeleniumEXample_Csharp.Types
 {
     public class Product : IEquatable<Product>
     {

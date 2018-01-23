@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using SeleniumEXample_Csharp.Types;
 
 namespace SeleniumEXample_Csharp.Pages
 {
