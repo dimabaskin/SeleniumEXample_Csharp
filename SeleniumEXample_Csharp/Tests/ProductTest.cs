@@ -10,6 +10,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
 using SeleniumEXample_Csharp.Pages;
+using SeleniumEXample_Csharp.Types;
 using NUnit.Framework;
 
 
@@ -26,6 +27,50 @@ namespace SeleniumEXample_Csharp.Tests
             var ProductList = mainPage.FindAllProductsOnPage();
             mainPage.CheckProductHaveSticker(ProductList);
         }
+
+        [Test]
+        [TestCase(Category = "Product",
+                  TestName = "Check First Product in Campaigns Section is the same Product on Product Page")]
+        public void FirstProductinCampaignsBoxPropertiesTest()
+        {
+            HomePage mainPage = new HomePage(driver);
+            ProductPage productPage = new ProductPage(driver);
+            Product mainPageProduct = new Product();
+            Product productPageProduct = new Product();
+            var ProductList = mainPage.FindAllProductsOnCampaignsBoxHomePage();
+
+            if (mainPage.ProductHaveStickerSale(ProductList[0]))
+            {
+                mainPageProduct = mainPage.GetSaleProductParameters(ProductList[0]);
+
+            }
+            else if (mainPage.ProductHaveStickerNew(ProductList[0]))
+            {
+                mainPageProduct = mainPage.GetNewProductParameters(ProductList[0]);
+            }
+
+            ProductList[0].Click();
+            var product = productPage.GetProductElement();
+
+            if (productPage.ProductHaveStickerSale(product))
+            {
+                productPageProduct = productPage.GetSaleProductParameters(product);
+            }
+            else if (productPage.ProductHaveStickerNew(product))
+            {
+                productPageProduct = productPage.GetNewProductParameters(product);
+            }
+
+            //Call Function to check the product have right proprties.
+            NUnit.Framework.Assert.IsTrue(mainPageProduct.HaveRightProperties(), "Error - Product Properties on Home Page does not sute!!!");
+            NUnit.Framework.Assert.IsTrue(productPageProduct.HaveRightProperties(), "Error - Product Properties on Home Page does not sute!!!");
+            //Call Function to Compare 2 objects mainPageProduct and productPageProduct
+            NUnit.Framework.Assert.IsTrue(mainPageProduct.Equals(productPageProduct), "Error - Product on Home Page does not sute the Procuct on Product Page!!!");
+
+
+
+        }
+
 
         [Test]
         [TestCase(Category = "Product",

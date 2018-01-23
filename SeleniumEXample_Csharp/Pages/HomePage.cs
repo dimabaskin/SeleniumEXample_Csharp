@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using SeleniumEXample_Csharp.Types;
 
 namespace SeleniumEXample_Csharp.Pages
 {
@@ -19,6 +20,27 @@ namespace SeleniumEXample_Csharp.Pages
         public IList<IWebElement> FindAllProductsOnPage()
         {
             return Driver.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
+
+        }
+
+        public IList<IWebElement> FindAllProductsOnMostPopularBoxHomePage()
+        {
+            var MostPopularBox = Driver.FindElement(By.Id("box-most-popular"));
+            return MostPopularBox.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
+
+        }
+
+        public IList<IWebElement> FindAllProductsOnCampaignsBoxHomePage()
+        {
+            var CampaignsBox = Driver.FindElement(By.Id("box-campaigns"));
+            return CampaignsBox.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
+
+        }
+
+        public IList<IWebElement> FindAllProductsOnLatestProductsBoxHomePage()
+        {
+            var LatestProductsBox = Driver.FindElement(By.Id("box-latest-products"));
+            return LatestProductsBox.FindElements(By.CssSelector("li.product.column.shadow.hover-light"));
 
         }
 
