@@ -53,7 +53,7 @@ namespace SeleniumEXample_Csharp.Pages
             var selectContryElement = new SelectElement(_countryDropDownField);
             selectContryElement.SelectByText(NewUser.Country);
             var selectZoneElement = new SelectElement(_zonedropDownField);
-            if ( IsActiveElement(_zonedropDownField))
+            if ( _zonedropDownField.Enabled )
             {
                 selectZoneElement.SelectByText(NewUser.Zone);
             }
@@ -65,12 +65,13 @@ namespace SeleniumEXample_Csharp.Pages
 
         }
 
-        internal bool IsActiveElement(IWebElement element)
+       /* internal bool IsActiveElement(IWebElement element)
         {
+            
             if (element.GetProperty("disabled") == "disabled")
                 return false;
             else
                 return true;
-        }
+        }*/
     }
 }
