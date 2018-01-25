@@ -22,6 +22,8 @@ namespace SeleniumEXample_Csharp.Pages
             while (IsThereAnyItemtoRemove())
             {
                 var SummaryBoxElement = Driver.FindElement(By.Id("box-checkout-summary"));
+                var ProductSortcutsList = Driver.FindElements(By.XPath("//ul[@class='shortcuts']//li[@class='shortcut']"));
+                if(ProductSortcutsList.Count > 1) { ProductSortcutsList[0].Click(); } // решает проблемму карусельки.
                 Driver.FindElement(By.XPath("//button[@name='remove_cart_item']")).Click();
                 wait.Until(ExpectedConditions.StalenessOf(SummaryBoxElement));
             }
