@@ -165,5 +165,17 @@ namespace SeleniumEXample_Csharp.Pages
 
             return product;
         }
+
+        public ProductPage ClickOnProduct(IWebElement ProductElement)
+        {
+            ProductElement.Click();
+            return new ProductPage(Driver);
+        }
+
+        internal CheckoutPage ClickCeckOutCartLink()
+        {
+            Driver.FindElement(By.XPath("//div[@id='cart']//a[@class='link'][contains(.,'Checkout')]")).Click();
+            return new CheckoutPage(Driver);
+        }
     }
 }

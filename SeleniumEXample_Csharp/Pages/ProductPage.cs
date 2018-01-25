@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using SeleniumEXample_Csharp.Types;
 
@@ -91,5 +92,19 @@ namespace SeleniumEXample_Csharp.Pages
             }
 
         }
+
+        internal ProductPage AddProductToCart()
+        {
+            var CartQuantityElement = Driver.FindElement(By.XPath("//span[@class='quantity']"));
+            string PrevQuantaty = CartQuantityElement.Text;
+
+            Driver.FindElement(By.XPath("//button[@name='add_cart_product']")).Click();
+            wait.Until(d=>d.FindElement(By.XPath("//span[@class='quantity']")).Text != PrevQuantaty);
+
+            return this;
+        }
+
+        
+
     }
 }

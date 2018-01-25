@@ -126,14 +126,14 @@ namespace SeleniumEXample_Csharp.Tests
             Product productPageProduct = new Product();
             var ProductList = mainPage.FindAllProductsOnPage();
 
-            for (int i=0; i < ProductList.Count; i++)
+            for (int i = 0; i < ProductList.Count; i++)
             {
                 var newProductList = mainPage.FindAllProductsOnPage();
 
                 if (mainPage.ProductHaveStickerSale(newProductList[i]))
                 {
                     mainPageProduct = mainPage.GetSaleProductParameters(newProductList[i]);
-                    
+
                 }
                 else if (mainPage.ProductHaveStickerNew(newProductList[i]))
                 {
@@ -143,28 +143,82 @@ namespace SeleniumEXample_Csharp.Tests
                 newProductList[i].Click();
                 var product = productPage.GetProductElement();
 
-                if(productPage.ProductHaveStickerSale(product))
+                if (productPage.ProductHaveStickerSale(product))
                 {
                     productPageProduct = productPage.GetSaleProductParameters(product);
                 }
-                else if(productPage.ProductHaveStickerNew(product))
+                else if (productPage.ProductHaveStickerNew(product))
                 {
                     productPageProduct = productPage.GetNewProductParameters(product);
                 }
 
                 //Call Function to check the product sootvetstvuet opisaniu.
-                NUnit.Framework.Assert.IsTrue(mainPageProduct.HaveRightProperties(),"Error - Product Properties on Home Page does not sute!!!");
+                NUnit.Framework.Assert.IsTrue(mainPageProduct.HaveRightProperties(), "Error - Product Properties on Home Page does not sute!!!");
                 NUnit.Framework.Assert.IsTrue(productPageProduct.HaveRightProperties(), "Error - Product Properties on Home Page does not sute!!!");
                 //Call Function to Compare 2 objects mainPageProduct and productPageProduct
                 NUnit.Framework.Assert.IsTrue(mainPageProduct.Equals(productPageProduct), "Error - Product on Home Page does not sute the Procuct on Product Page!!!");
-                
+
                 productPage.BackToHomePage();
-                
+
+            }
+        }
+
+        [Test]
+        [TestCase(Category = "Product")]
+        public void AddNEWMostPopularProductsToCart()
+        {
+            HomePage mainPage = new HomePage(driver);
+            int NumberOfProductsToAdd = 3;
+            var ProductList = mainPage.FindAllProductsOnMostPopularBoxHomePage();
+            if (ProductList.Count > 0)
+            {
+                for (int i = 0; i < NumberOfProductsToAdd; i++)
+                {
+                    for (int j = 0; j < ProductList.Count; j++)
+                    {
+                        var newProductList = mainPage.FindAllProductsOnMostPopularBoxHomePage();
+                        if (mainPage.ProductHaveStickerNew(newProductList[j]))
+                        {
+                            mainPage.ClickOnProduct(newProductList[j]).AddProductToCart().BackToHomePage();
+                        }
+                    }
+                }
+
             }
 
 
-            
+        }
 
+        [Test]
+        [TestCase(Category = "Product")]
+        public void RemoveAllProductsFromCart()
+        {
+            HomePage mainPage = new HomePage(driver);
+            AddNEWMostPopularProductsToCart();
+            mainPage.ClickCeckOutCartLink().RemoveAllProductsFromCart();
+        }
+
+        [Test]
+        [TestCase(Category = "Product")]
+        public void AddTreeItemsToCartAndRemove()
+        {
+            HomePage mainPage = new HomePage(driver);
+            int iNumberOfProductsToAdd = 3;
+            int iFirstProductInList = 0;
+            // ADD 3 Items to Cart
+            for (int i = 0; i < iNumberOfProductsToAdd; i++)
+            {
+                var ProductList = mainPage.FindAllProductsOnMostPopularBoxHomePage();
+                if (ProductList.Count > 0)
+                {
+                    if (mainPage.ProductHaveStickerNew(ProductList[iFirstProductInList]))
+                    {
+                        mainPage.ClickOnProduct(ProductList[iFirstProductInList]).AddProductToCart().BackToHomePage();
+                    }
+                }
+            }
+            // REMOVE ALL Items From Cart
+            mainPage.ClickCeckOutCartLink().RemoveAllProductsFromCart();
 
         }
     }

@@ -14,10 +14,12 @@ namespace SeleniumEXample_Csharp.Pages
     public class BasePage
     {
         internal IWebDriver Driver;
+        internal WebDriverWait wait;
 
         public BasePage(IWebDriver driver)
         {
             Driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
     }
 }
