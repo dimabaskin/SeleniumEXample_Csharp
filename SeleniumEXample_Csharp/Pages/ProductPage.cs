@@ -97,14 +97,26 @@ namespace SeleniumEXample_Csharp.Pages
         {
             var CartQuantityElement = Driver.FindElement(By.XPath("//span[@class='quantity']"));
             string PrevQuantaty = CartQuantityElement.Text;
-
+            SelectSizeIfRequired();
             Driver.FindElement(By.XPath("//button[@name='add_cart_product']")).Click();
             wait.Until(d=>d.FindElement(By.XPath("//span[@class='quantity']")).Text != PrevQuantaty);
 
             return this;
         }
 
-        
-
+        private void SelectSizeIfRequired()
+        {
+           try
+            {
+                var SelectSizeOptionElement = Driver.FindElement(By.XPath("//select[@name='options[Size]']"));
+                var SelectSize = new SelectElement(SelectSizeOptionElement);
+                var SizeOptionsList = SelectSizeOptionElement.FindElements(By.TagName("option"));
+                SelectSize.SelectByValue(SizeOptionsList[1].GetProperty("value"));
+            }
+            catch
+            {
+                //Do Nothing - the element not present.
+            }
+        }
     }
 }

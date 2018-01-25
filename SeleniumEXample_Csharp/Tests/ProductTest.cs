@@ -221,5 +221,12 @@ namespace SeleniumEXample_Csharp.Tests
             mainPage.ClickCeckOutCartLink().RemoveAllProductsFromCart();
 
         }
+
+        [Test]
+        public void TestTest()
+        {
+            driver.Url = "http://localhost:8080/litecart/en/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1";
+            new ProductPage(driver).AddProductToCart();
+        }
     }
 }
