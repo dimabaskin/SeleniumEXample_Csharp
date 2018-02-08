@@ -28,5 +28,14 @@ namespace SeleniumEXample_Csharp.Utils
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        public string RandomAlpabetString(int length, bool toLower = true)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (toLower)
+                chars = chars.ToLower();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
     }
 }

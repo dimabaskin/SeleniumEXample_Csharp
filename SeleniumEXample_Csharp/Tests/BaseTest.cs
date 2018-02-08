@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Configuration;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -46,8 +47,9 @@ namespace SeleniumEXample_Csharp.Tests
             }
 
             whait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            var dir = Path.GetDirectoryName(typeof(BaseTest).Assembly.Location);
+            Directory.SetCurrentDirectory(dir);
 
-           
         }
 
        

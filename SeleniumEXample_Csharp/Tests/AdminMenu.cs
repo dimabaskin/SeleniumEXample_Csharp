@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 using SeleniumEXample_Csharp.Pages;
 using NUnit.Framework;
 
@@ -222,5 +223,27 @@ namespace SeleniumEXample_Csharp.Tests
             
         }
 
+        [Test]
+        [TestCase(Category ="Admin",TestName ="Add New Product")]
+        public void AddNewProduct()
+        {
+            new MainAdminPage(driver).ClickOnMenu("Catalog");
+            CatalogAdminPage CatalogPage = new CatalogAdminPage(driver);
+            PageFactory.InitElements(driver, CatalogPage);
+            NUnit.Framework.Assert.IsTrue(CatalogPage.ClickAddNewProductButton().FillGeneralTabProductData().FillInformationTabProductData().FillPricesTabProductData().SaveNewProduct().CheckIfProductWasAddedToCatalog(), "Error - The New Product was not Found in Catalog !!!");
+            
+         
+        }
+
+        [Test]
+        public void Test()
+        {
+            new MainAdminPage(driver).ClickOnMenu("Catalog");
+            CatalogAdminPage CatalogPage = new CatalogAdminPage(driver);
+            PageFactory.InitElements(driver, CatalogPage);
+            CatalogPage.ClickAddNewProductButton().FillGeneralTabProductData();
+        }
+
+        
     }
 }

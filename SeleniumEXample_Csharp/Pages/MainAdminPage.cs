@@ -325,15 +325,16 @@ namespace SeleniumEXample_Csharp.Pages
 
         }
 
-        private void ClickOnMenu(string MenuName)
+        internal void ClickOnMenu(string MenuName)
         {
             var MenuElement = FindElementInMenu(MenuName);
             if (MenuElement is null) { NUnit.Framework.Assert.Fail(MenuName + " Menu not Exist on Page!!!"); }
             else { MenuElement.Click(); }
             CheckTitle(MenuName);
+            
         }
 
-        private void ClickOnMenu(string MenuName, string TitleName)
+        internal void ClickOnMenu(string MenuName, string TitleName)
         {
             var MenuElement = FindElementInMenu(MenuName);
             if (MenuElement is null) { NUnit.Framework.Assert.Fail(MenuName + " Menu not Exist on Page!!!"); }
@@ -341,7 +342,7 @@ namespace SeleniumEXample_Csharp.Pages
             CheckTitle(TitleName);
         }
 
-        private void ClickOnSubMenu(string SubMenuIdElement, string Title)
+        internal void ClickOnSubMenu(string SubMenuIdElement, string Title)
         {
             Driver.FindElement(By.Id(SubMenuIdElement)).Click();
             CheckTitle(Title);

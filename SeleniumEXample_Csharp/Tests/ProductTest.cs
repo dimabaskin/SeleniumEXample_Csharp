@@ -225,7 +225,8 @@ namespace SeleniumEXample_Csharp.Tests
         [Test]
         public void TestTest()
         {
-            driver.Url = "http://localhost:8080/litecart/en/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1";
+            //driver.Url = "http://localhost:8080/litecart/en/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1";
+            driver.Url = "http://localhost:8080/litecart/en/rubber-ducks-c-1/blue-duck-p-4";
             new ProductPage(driver).AddProductToCart();
         }
     }

@@ -60,12 +60,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\CatalogAdminPage.cs" />
     <Compile Include="Pages\CheckoutPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\MainAdminPage.cs" />
     <Compile Include="Pages\ProductPage.cs" />
     <Compile Include="Pages\SignupPage.cs" />
+    <Compile Include="Resources\Gender.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gender.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\SignUpTest.cs" />
+    <Compile Include="Types\AdminCatalogProduct.cs" />
     <Compile Include="Types\Product.cs" />
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +81,7 @@
     <Compile Include="Tests\SimpleTest.cs" />
     <Compile Include="Types\User.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Utils\WebDriverUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -84,7 +92,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Gender.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Gender.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
