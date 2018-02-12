@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumEXample_Csharp.Pages;
 using NUnit.Framework;
@@ -234,6 +235,61 @@ namespace SeleniumEXample_Csharp.Tests
             
          
         }
+
+        [Test]
+        [TestCase(Category = "Admin", TestName = "Open Links in New Window")]
+        public void OpenLinksinNewWindow()
+        {
+            new MainAdminPage(driver).ClickOnMenu("Countries");
+            var CountryList =  driver.FindElements(By.XPath("//tr[@class='row']"));
+            int index = 1;
+            //List<string> HTTPLink = new List<string>;
+            if (CountryList.Count > 0)
+            {
+                IWebElement CountryRow = CountryList.ElementAt(index);
+                CountryRow.FindElement(By.XPath("//td/a[@title='Edit']")).Click();
+                var LinkList = driver.FindElements(By.XPath("//a[contains(@href,'http://')][@target='_blank']"));
+                foreach (var link in LinkList)
+                {
+                    string MainWindow = driver.CurrentWindowHandle;
+                    ICollection<string> ExistingWindows = driver.WindowHandles;
+                    link.Click();
+                    
+                    // string NewWindow = wait.Until(ThereIsWindowOtherThan(ExistingWindows));
+                    //  driver.SwitchTo().Window(NewWindow);
+                    //.....
+                    ICollection<string> NewExstingWindows = driver.WindowHandles;
+                    //bool isremooved = NewExstingWindows.Remove(MainWindow);
+                    List<string> SetOfwindowsLIst = NewExstingWindows.ToList();
+                    bool isremooved = SetOfwindowsLIst.Remove(MainWindow);
+
+                        foreach (var NewWindow in SetOfwindowsLIst)
+                        {
+                            driver.SwitchTo().Window(NewWindow);
+                            wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.TagName("title")));
+                            driver.Close();
+                        }
+                    
+                    
+                    
+                    driver.SwitchTo().Window(MainWindow);
+
+
+                }
+
+                    
+            }
+
+            
+            //Edit first Country in List
+            //Find all Links to new Window
+            //Clik on each of them 
+            // check that new Window have been opened
+            //Close a new window
+            //Activate Current Window
+
+        }
+
 
         [Test]
         public void Test()

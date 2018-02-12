@@ -22,7 +22,7 @@ namespace SeleniumEXample_Csharp.Tests
             driver.Url = "http://software-testing.ru/";
             //driver.FindElement(By.Name("q")).SendKeys("software-testing.ru" + Keys.Enter);
             //driver.FindElement(By.LinkText("http://software-testing.ru/")).Click();
-            whait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
+            wait.Until(ExpectedConditions.TitleIs("Software-Testing.Ru"));
         }
         
     }

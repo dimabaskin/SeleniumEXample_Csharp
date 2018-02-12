@@ -18,7 +18,7 @@ namespace SeleniumEXample_Csharp.Tests
 
         internal IWebDriver driver;
         private readonly string _driverType;
-        internal WebDriverWait whait;
+        internal WebDriverWait wait;
 
         public BaseTest()
         {
@@ -46,7 +46,7 @@ namespace SeleniumEXample_Csharp.Tests
                     break;
             }
 
-            whait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             var dir = Path.GetDirectoryName(typeof(BaseTest).Assembly.Location);
             Directory.SetCurrentDirectory(dir);
 

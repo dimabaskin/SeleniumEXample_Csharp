@@ -20,4 +20,3 @@ C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.pdb
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.Resources.Gender.resources
 C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csproj.GenerateResource.Cache
-C:\Users\Dmitrib\source\repos\SeleniumEXample_Csharp\SeleniumEXample_Csharp\obj\Debug\SeleniumEXample_Csharp.csprojResolveAssemblyReference.cache
